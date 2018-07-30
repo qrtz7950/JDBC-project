@@ -6,6 +6,9 @@ public class AccountVO {
 	private String account_money;
 
 	public AccountVO() {
+		
+		
+		
 	}
 
 	public AccountVO(String id, String account, String account_money) {

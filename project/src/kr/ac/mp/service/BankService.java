@@ -67,7 +67,6 @@ public class BankService {
 	}
 
 	public AccountVO selAccount(String account) {
-		
 		return accDao.selAccount(account);
 	}
 

@@ -101,7 +101,7 @@ public class AccountDAO {
    }
    public AccountVO selAccount(String account) {
       
-      AccountVO acc = null;
+      AccountVO acc = new AccountVO(); 
       
       try {
          conn = ConnectionFactory.getConnection();
@@ -119,7 +119,9 @@ public class AccountDAO {
          ResultSet rs = pstmt.executeQuery();
                   
          while(rs.next()) {
-            acc = new AccountVO(rs.getString(1),rs.getString(2),rs.getString(3));
+            acc.setId(rs.getString(1));
+            acc.setAccount(rs.getString(2));
+            acc.setAccount_money(rs.getString(3));
          }
          
          } catch(Exception e) {

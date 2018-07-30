@@ -8,7 +8,7 @@ import kr.ac.mp.vo.AccountVO;
 public class AccountSelectUI extends BaseUI {
 	
 	private static AccountVO acc = new AccountVO();
-	private String account;
+	private static String account;
 	private List<Object> list = new ArrayList<Object>();
 	
 	@Override
@@ -19,9 +19,13 @@ public class AccountSelectUI extends BaseUI {
 		list = bankser.selAccount();
 		
 		int accSel = scanInt("입니다 업무를 보고싶은 계좌를 입력하세요");
+		accSel -= 1;
 		
 		System.out.print("선택하신 계좌는  ");
-		acc = (AccountVO) list.get(accSel);
+		acc = (AccountVO)(list.get(accSel));
+		System.out.println(list.get(accSel));
+		
+		account = acc.getAccount();
 		
 		I_BankUI ui = null;
 		
@@ -29,7 +33,7 @@ public class AccountSelectUI extends BaseUI {
 		ui.execute();
 	}
 	
-	public String getaCC() {
+	public String getAcc() {
 		return account;
 	}
 }
