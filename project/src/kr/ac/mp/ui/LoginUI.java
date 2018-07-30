@@ -17,7 +17,6 @@ public class LoginUI extends BaseUI {
 		
 		bank.setId(id);
 		bank.setPassword(password);
-				
 		bank = bankser.login(bank);
 		
 		if (bank == null) {
