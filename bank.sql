@@ -17,12 +17,12 @@ create table loan(
 create table account(
     id               varchar(20)   
     ,account         varchar(20)   primary key
-    ,account_money   varchar(20)   default 0
+    ,account_money   number(10)   default 0
 );
 
-insert INTO memberlist (id, name , password, rest) values('qrtz7950', '±èÁ¦Èñ', '1111', 0);
-insert INTO memberlist (id, name , password, rest) values('Ddock2', '°ûº´¹®', '2222', 0);
-insert INTO memberlist (id, name , password, rest) values('asrbtjd', 'ÃÖ±Ô¼º', '3333', 0);
+insert INTO memberlist (id, name , password, rest) values('qrtz7950', 'Â±Ã¨ÃÂ¦ÃˆÃ±', '1111', 0);
+insert INTO memberlist (id, name , password, rest) values('Ddock2', 'Â°Ã»ÂºÂ´Â¹Â®', '2222', 0);
+insert INTO memberlist (id, name , password, rest) values('asrbtjd', 'ÃƒÃ–Â±Ã”Â¼Âº', '3333', 0);
 
 insert INTO loan (id, loan_money) values('qrtz7950', 1000);
 insert INTO loan (id, loan_money) values('Dock2', 0);
