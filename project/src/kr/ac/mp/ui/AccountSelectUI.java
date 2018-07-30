@@ -3,8 +3,11 @@ package kr.ac.mp.ui;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AccountSelectUI extends BaseUI {
+import kr.ac.mp.vo.AccountVO;
 
+public class AccountSelectUI extends BaseUI {
+	
+	private String account;
 	private List<Object> list = new ArrayList<Object>();
 	
 	@Override
@@ -14,13 +17,18 @@ public class AccountSelectUI extends BaseUI {
 		
 		list = bankser.selAccount();
 		
-		for(int i = 0; i<list.size(); i++) {
-			System.out.println(list.get(i));
-		}
-				
-		String account = scanString("입니다 업무를 보고싶은 계좌번호를 입력하세요");
+		int accSel = scanInt("입니다 업무를 보고싶은 계좌를 입력하세요");
 		
-		acc = bankser.selAccount(account);
+		System.out.print("선택하신 계좌는  ");
+		acc = (AccountVO) list.get(accSel);
+		
+		I_BankUI ui = null;
+		
+		ui = new AccountTaskUI();
+		ui.execute();
 	}
-
+	
+	public String getaCC() {
+		return account;
+	}
 }

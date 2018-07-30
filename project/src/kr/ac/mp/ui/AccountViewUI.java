@@ -12,10 +12,6 @@ public class AccountViewUI extends BaseUI{
 		System.out.println("현재 소유하고 있는 계좌 현황입니다");
 		
 		list = bankser.selAccount();
-		
-		for(int i = 0; i<list.size(); i++) {
-			System.out.println(list.get(i));
-		}
 	}
 
 }

@@ -23,8 +23,6 @@ public class BankService {
 		loanDao = new LoanDAO();
 		accDao = new AccountDAO();
 	}
-	
-	
 
 	public void sign(BankVO bank) {
 		dao.insertMember(bank);
@@ -58,7 +56,14 @@ public class BankService {
 
 	public List<Object> selAccount() {
 		
-		return accDao.selAccount();
+		List<Object> list = accDao.selAccount(); 
+		
+		for(int i = 0; i<list.size(); i++) {
+			System.out.print(i+1 + ". ");
+			System.out.println(list.get(i));
+		}
+		
+		return list;
 	}
 
 	public AccountVO selAccount(String account) {
@@ -74,7 +79,7 @@ public class BankService {
 		int currLoan = loanDao.loanUpdate(loanM);
 		System.out.print("대출받은 금액을 보낼 계좌를 입력하세요 : ");
 		String account = sc.nextLine();
-		accDao.sendLoanMoney(account, loanM);
+		accDao.sendMoney(account, loanM);
 		System.out.println(name + "님의 총 대출 금액은 : " + currLoan + "원 입니다.");
 	}
 	
@@ -82,4 +87,9 @@ public class BankService {
 		
 	}
 
+	public void sendMoney(String acc, int m) {
+		accDao.subMoney(m);
+		accDao.sendMoney(acc, m);
+	}
+	
 }
