@@ -1,0 +1,5 @@
+오라클db 다중접속 설정
+
+윈도우창 검색 - 방화벽설정 - 고급 설정 - 인바운드 규칙 - 새규칙 - 포트 - 1521 open 
+윈도우창 검색 - 서비스 - OracleServiceXE 랑 OracleXETNSListener 둘다 차례대로 껏다 키기
+자바 ConnectionFactory.java 파일의 ip를 접속하려는 컴퓨터로 바꾸면된다
