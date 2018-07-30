@@ -7,6 +7,7 @@ import kr.ac.mp.vo.AccountVO;
 
 public class AccountSelectUI extends BaseUI {
 	
+	private static AccountVO acc = new AccountVO();
 	private String account;
 	private List<Object> list = new ArrayList<Object>();
 	
