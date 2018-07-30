@@ -4,6 +4,7 @@ public class LoanViewUI extends BaseUI {
  	
 	public void execute() {
 		
+		bankser.loanView();
 		
  	}
 	

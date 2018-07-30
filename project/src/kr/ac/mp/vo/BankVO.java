@@ -5,7 +5,6 @@ public class BankVO {
 	private static String id;
 	private static String name;
 	private static String password;
-	private static String account;
 	
 	public BankVO() {
 		
@@ -46,12 +45,5 @@ public class BankVO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	public String getAccount() {
-		return account;
-	}
-
-	public void setAccount(String account) {
-		this.account = account;
-	}
+	
 }

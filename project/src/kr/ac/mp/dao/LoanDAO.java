@@ -12,7 +12,13 @@ public class LoanDAO {
 	
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
+	BankVO bank = null;
 	
+		
+	public LoanDAO() {
+		bank = new BankVO();
+	}
+
 	/**
 	 * 대출할때 loan 테이블에 총 대출액 update
 	 * @param (int) loan money
@@ -20,7 +26,6 @@ public class LoanDAO {
 	 */
 	public int loanUpdate(int loanM) {
 		
-		BankVO bank = new BankVO();
 		int currLoan = loanM;
 		
 		try {
@@ -73,11 +78,44 @@ public class LoanDAO {
 			} catch(Exception e) {
 				e.printStackTrace();
 			} finally {
-			JDBCClose.close(conn, pstmt);
+				JDBCClose.close(conn, pstmt);
 			}
 		
 		return currLoan;
 		
+	}
+	
+	public String loanview() {
+		
+		String str = null;
+		
+		try {
+			conn = ConnectionFactory.getConnection();
+			
+			StringBuilder sql = new StringBuilder();
+			sql.append("select m.name, l.loan_money ");
+			sql.append("  from loan l inner join memberlist m ");
+			sql.append("    on l.id = m.id ");
+			sql.append("  where l.id = ? ");
+			
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, bank.getId());
+			
+			ResultSet rs = pstmt.executeQuery(); 
+			
+			if(!rs.next()) {
+				str = "대출 한적도 없습니다.";
+			}else {
+				str = rs.getString(1) + "님의 총 대출 금액은 " + String.valueOf(rs.getInt(2)) + "원 입니다.";
+			}
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCClose.close(conn, pstmt);
+		}
+		
+		return str;
 	}
 	
 		
