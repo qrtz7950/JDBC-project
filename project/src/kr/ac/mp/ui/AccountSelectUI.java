@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.ac.mp.vo.AccountVO;
+import kr.ac.mp.vo.AccountVOFactory;
 
 public class AccountSelectUI extends BaseUI {
 
-	private static AccountVO acc = new AccountVO();
+	private static AccountVO acc = AccountVOFactory.getInstance();
 	private static String account;
 	private List<Object> list = new ArrayList<Object>();
 
@@ -32,9 +33,11 @@ public class AccountSelectUI extends BaseUI {
 		accSel -= 1;
 
 		System.out.print("선택하신 계좌는  ");
-		acc = (AccountVO) (list.get(accSel));
-		System.out.println(list.get(accSel));
-
+		acc.setId(((AccountVO) (list.get(accSel))).getId());
+		acc.setAccount(((AccountVO) (list.get(accSel))).getAccount());
+		acc.setAccount_money(((AccountVO) (list.get(accSel))).getAccount_money());
+		System.out.println(acc);
+		
 		account = acc.getAccount();
 		
 	}

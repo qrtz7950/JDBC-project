@@ -18,12 +18,13 @@ public class BankService {
 	private MemberDAO dao;
 	private LoanDAO loanDao;
 	private AccountDAO accDao;
-	AccountVO acc = AccountVOFactory.getInstance();
+	AccountVO acc;
 	
 	public BankService() {
 		dao = new MemberDAO();
 		loanDao = new LoanDAO();
 		accDao = new AccountDAO();
+		acc = AccountVOFactory.getInstance();
 	}
 	
 	
@@ -95,7 +96,7 @@ public class BankService {
 	}
 	
 	public void sendMoney(String account, int m) {
-		accDao.subMoney(acc.getAccount(), m);			// 수정@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+		accDao.subMoney(acc.getAccount(), m);
 	    accDao.sendMoney(account, m);
 	}
 	

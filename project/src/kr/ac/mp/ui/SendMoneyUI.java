@@ -9,6 +9,7 @@ public class SendMoneyUI extends BaseUI {
       int m = scanInt("송금할 금액을 입력하세요");
       String acc = scanString("송금할 계좌를 입력하세요");
       
+      
       bankser.sendMoney(acc, m);
    }
 

@@ -86,6 +86,7 @@ public class AccountDAO {
 			ResultSet rs = pstmt.executeQuery();
 						
 			while(rs.next()) {
+				acc = new AccountVO();
 				acc.setId(rs.getString(1));
 				acc.setAccount(rs.getString(2));
 				acc.setAccount_money(rs.getString(3));
