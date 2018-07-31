@@ -22,9 +22,16 @@ public abstract class BaseUI implements I_BankUI {
 	}
 	
 	protected int scanInt(String msg) {
+		String temp;
+		System.out.print(msg);
 		
-		System.out.println(msg);
-		int sel = Integer.parseInt(sc.nextLine());
+		do {
+			System.out.println(" 숫자만 입력해주세요");
+			temp = sc.nextLine();
+		} while(!checkInt(temp));
+		
+		int sel = Integer.parseInt(temp);
+		
 		return sel;
 	}
 	
@@ -33,6 +40,20 @@ public abstract class BaseUI implements I_BankUI {
 		System.out.println(msg);
 		String str = sc.nextLine();
 		return str;
+	}
+	
+	private boolean checkInt(String textInput) {
+
+		char chrInput;
+						
+		for (int i = 0; i < textInput.length(); i++) {
+			chrInput = textInput.charAt(i);
+			if (chrInput >= 0x30 && chrInput <= 0x39) {
+			} else {
+				return false;
+			}
+		}
+		return true;
 	}
 	
 }

@@ -4,11 +4,11 @@ public class BankUI extends BaseUI {
 
 	@Override
 	public void execute() {
-		
-	I_BankUI ui = null;
 	
 	while(true) {
 		int type = menu();
+		I_BankUI ui = null;
+		
 		switch (type) {
 		case 1:
 			ui =  new SignUI(); 
