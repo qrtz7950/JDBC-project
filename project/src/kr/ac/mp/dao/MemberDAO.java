@@ -22,12 +22,12 @@ public class MemberDAO {
 			conn = ConnectionFactory.getConnection();
 			
 			StringBuilder sql = new StringBuilder();
-			sql.append("insert into memberlist(name, id, password, rest) ");
+			sql.append("insert into memberlist(id, name, password, rest) ");
 			sql.append(" values(?, ?, ?, 0) ");
 			
 			pstmt = conn.prepareStatement(sql.toString());
-			pstmt.setString(1, bank.getName());
-			pstmt.setString(2, bank.getId());
+			pstmt.setString(1, bank.getId());
+			pstmt.setString(2, bank.getName());
 			pstmt.setString(3, bank.getPassword());
 			
 			pstmt.executeUpdate();
@@ -67,7 +67,9 @@ public class MemberDAO {
 				String id = rs.getString(1);
 				String name = rs.getString(2);
 				String password = rs.getString(3);
-				bank = new BankVO(name, id, password);
+				bank.setId(id);
+				bank.setName(name);
+				bank.setPassword(password);
 				System.out.println(name + "님 환영합니다 로그인 되었습니다");
 			} else {
 				System.out.println("일치하는 정보가 없습니다 ID와 비밀번호를 확인하고 다시 입력해주세요");
