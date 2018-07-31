@@ -5,15 +5,6 @@ public class AccountVO {
 	private String account;
 	private String account_money;
 
-	public AccountVO() {
-	}
-
-	public AccountVO(String id, String account, String account_money) {
-		super();
-		this.id = id;
-		this.account = account;
-		this.account_money = account_money;
-	}
 
 	public String getId() {
 		return id;

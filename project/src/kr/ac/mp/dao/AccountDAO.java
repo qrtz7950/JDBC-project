@@ -11,6 +11,7 @@ import kr.ac.mp.ui.AccountViewUI;
 import kr.ac.mp.util.ConnectionFactory;
 import kr.ac.mp.util.JDBCClose;
 import kr.ac.mp.vo.AccountVO;
+import kr.ac.mp.vo.AccountVOFactory;
 import kr.ac.mp.vo.BankVO;
 
 public class AccountDAO {
@@ -19,7 +20,7 @@ public class AccountDAO {
 	private PreparedStatement pstmt = null;
 	boolean bool = false;
 	BankVO bank = new BankVO();
-	AccountVO acc = new AccountVO();
+	AccountVO acc = AccountVOFactory.getInstance();
 	Scanner sc = new Scanner(System.in);
 	
 	public boolean accountCompare(String accountNum) {
@@ -70,7 +71,6 @@ public class AccountDAO {
 	public List<Object> selAccount() {
 		
 		List<Object> list = new ArrayList<Object>();
-		AccountVO acc = null;
 		
 		try {
 			conn = ConnectionFactory.getConnection();
@@ -86,7 +86,9 @@ public class AccountDAO {
 			ResultSet rs = pstmt.executeQuery();
 						
 			while(rs.next()) {
-				acc = new AccountVO(rs.getString(1),rs.getString(2),rs.getString(3));
+				acc.setId(rs.getString(1));
+				acc.setAccount(rs.getString(2));
+				acc.setAccount_money(rs.getString(3));
 				list.add(acc);
 			}
 			
@@ -99,8 +101,6 @@ public class AccountDAO {
 		return list;
 	}
 	public AccountVO selAccount(String account) {
-		
-		AccountVO acc = new AccountVO();
 		
 		try {
 			conn = ConnectionFactory.getConnection();
@@ -132,8 +132,6 @@ public class AccountDAO {
 	}
 	
 	public void delAccount(String account) {
-		
-		AccountVO acc = null;
 		
 		try {
 			conn = ConnectionFactory.getConnection();

@@ -7,8 +7,8 @@ import java.util.Scanner;
 import kr.ac.mp.dao.AccountDAO;
 import kr.ac.mp.dao.LoanDAO;
 import kr.ac.mp.dao.MemberDAO;
-import kr.ac.mp.ui.AccountSelectUI;
 import kr.ac.mp.vo.AccountVO;
+import kr.ac.mp.vo.AccountVOFactory;
 import kr.ac.mp.vo.BankVO;
 
 public class BankService {
@@ -18,6 +18,7 @@ public class BankService {
 	private MemberDAO dao;
 	private LoanDAO loanDao;
 	private AccountDAO accDao;
+	AccountVO acc = AccountVOFactory.getInstance();
 	
 	public BankService() {
 		dao = new MemberDAO();
@@ -93,9 +94,9 @@ public class BankService {
 		loanDao.loanUpdate(-returnM);
 	}
 	
-	public void sendMoney(String acc, int m) {
-		accDao.subMoney(acc, m);			// 수정@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-	    accDao.sendMoney(acc, m);
+	public void sendMoney(String account, int m) {
+		accDao.subMoney(acc.getAccount(), m);			// 수정@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+	    accDao.sendMoney(account, m);
 	}
 	
 	public void loanView() {
