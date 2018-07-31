@@ -4,29 +4,31 @@ public class AccountTaskUI extends BaseUI {
    
    public void execute() {
 
-      int type = menu();
-      I_BankUI ui = null;
-      
-      switch(type) {
-      case 1:
-         ui =  new ViewUI();
-         break;
-      case 2:
-         ui = new SendMoneyUI();
-         break;
-      case 3:
-         ui = new AccountUI();
-         break;
-      case 0:
-         ui = new ExitUI();
-         break;
-      }
-      if(ui != null) {
-         ui.execute();
-      }
-      else {
-         System.out.println("그런 숫자는 없잖아요 다시선택하세요");
-      }
+	   while(true) {
+	      int type = menu();
+	      I_BankUI ui = null;
+	      
+	      switch(type) {
+	      case 1:
+	         ui =  new ViewUI();
+	         break;
+	      case 2:
+	         ui = new SendMoneyUI();
+	         break;
+	      case 3:
+	         ui = new AccountUI();
+	         break;
+	      case 0:
+	         ui = new ExitUI();
+	         break;
+	      }
+	      if(ui != null) {
+	         ui.execute();
+	      }
+	      else {
+	         System.out.println("그런 숫자는 없잖아요 다시선택하세요");
+	      }
+	   }
    }
 
 

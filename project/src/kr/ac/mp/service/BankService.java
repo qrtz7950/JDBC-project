@@ -33,9 +33,9 @@ public class BankService {
 		dao.insertMember(bank);
 	}
 
-	public BankVO login(BankVO bank) {
-		bank = dao.idPwdCompare(bank);
-		return bank;
+	public boolean login(BankVO bank) {
+		boolean bool = dao.idPwdCompare(bank);
+		return bool;
 	}
 
 	public BankVO loginConfirm() {

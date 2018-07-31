@@ -1,16 +1,13 @@
 package kr.ac.mp.ui;
-import java.util.Scanner;
 
 public class AccountUI extends BaseUI {
 
 	@Override
 	public void execute() {
-		
-	I_BankUI ui = null;
-	Scanner sc = new Scanner(System.in);
 	
 	while(true) {
 		int type = menu();
+		I_BankUI ui = null;
 		switch (type) {
 		case 1:
 			ui =  new AccountSelectUI();

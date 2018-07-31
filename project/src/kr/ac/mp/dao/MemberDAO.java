@@ -47,7 +47,7 @@ public class MemberDAO {
 	 * @param bank
 	 * @return
 	 */
-	public BankVO idPwdCompare(BankVO bank) {
+	public boolean idPwdCompare(BankVO bank) {
 		
 		try {
 			conn = ConnectionFactory.getConnection();
@@ -70,17 +70,15 @@ public class MemberDAO {
 				bank.setId(id);
 				bank.setName(name);
 				bank.setPassword(password);
-				System.out.println(name + "님 환영합니다 로그인 되었습니다");
 			} else {
-				System.out.println("일치하는 정보가 없습니다 ID와 비밀번호를 확인하고 다시 입력해주세요");
-				return null;
+				return false;
 			}
 		} catch(Exception e) {
 				e.printStackTrace();
 		} finally {
 			JDBCClose.close(conn, pstmt);
 		}
-		return bank;
+		return true;
 	}
 	
 	public void sendMoney(int sendM) {
@@ -104,7 +102,7 @@ public class MemberDAO {
 			} catch(Exception e) {
 				e.printStackTrace();
 			} finally {
-			JDBCClose.close(conn, pstmt);
+				JDBCClose.close(conn, pstmt);
 			}
 		
 	}
