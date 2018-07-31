@@ -22,9 +22,6 @@ public class AccountUI extends BaseUI {
 			ui = new AccountDeleteUI();
 			break;
 		case 5:
-			ui = new LoanUI();
-			break;
-		case 6:
 			ui = new BankUI();
 			break;
 		case 0:
@@ -46,8 +43,7 @@ public class AccountUI extends BaseUI {
 		System.out.println("2.계좌조회");
 		System.out.println("3.계좌생성");
 		System.out.println("4.계좌해지");
-		System.out.println("5.대출");
-		System.out.println("6.뒤로가기");
+		System.out.println("5.뒤로가기");
 		System.out.println("0.종료");
 		int type = scanInt("메뉴를 선택하세요");
 		

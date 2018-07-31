@@ -8,7 +8,7 @@ public class LoanReturnUI extends BaseUI {
 		
 		AccountSelectUI asui = new AccountSelectUI();
 		
-		asui.accountselect();
+		asui.accountSelect();
 		
 		returnM = scanInt("대출상환하실 금액을 입력하세요: ");
 		

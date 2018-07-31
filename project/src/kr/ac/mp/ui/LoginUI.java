@@ -21,22 +21,19 @@ public class LoginUI extends BaseUI {
 		bool = bankser.login(bank);
 		
 		if (!bool) {
-			System.out.println("로그인 정보가 틀립니다");
-			System.out.println("다시 로그인 하시겠습니다?");
-			System.out.println("1.다시 로그인 한다");
-			System.out.println("2.메인메뉴로 돌아간다");
-			int re = scanInt("1 or 2 : ");
-			if (re == 1) {
-				execute();
+			System.out.println("아이디 또는 비밀번호를 확인해주세요");
+			System.out.println("다시 로그인 하시겠습니까?");
+			System.out.println("1. 다시 로그인 시도");
+			System.out.println("2. 이전으로");
+			int sel = scanInt("메뉴를 선택해주세요");
+				if(sel == 1) {
+					execute();
+				} else {
+					new BankUI().execute();
+				}
 			} else {
-				System.out.println("메인메뉴로 돌아갑니다");
-				ui = new BankUI();
-				ui.execute();
-			}
-		} else {
 			System.out.println(bank.getName() + "님 환영합니다");
-			ui = new AccountUI();
-			ui.execute();
+			new AccountUI().execute();
 		}
 		
 	}

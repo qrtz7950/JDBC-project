@@ -7,7 +7,6 @@ public class AccountTaskUI extends BaseUI {
 	   while(true) {
 	      int type = menu();
 	      I_BankUI ui = null;
-	      
 	      switch(type) {
 	      case 1:
 	         ui =  new ViewUI();
@@ -16,6 +15,9 @@ public class AccountTaskUI extends BaseUI {
 	         ui = new SendMoneyUI();
 	         break;
 	      case 3:
+	    	  ui = new LoanUI();
+	    	  break;
+	      case 4:
 	         ui = new AccountUI();
 	         break;
 	      case 0:
@@ -39,7 +41,8 @@ public class AccountTaskUI extends BaseUI {
       System.out.println("------------------------------------------");
       System.out.println("1.조회");
       System.out.println("2.이체");
-      System.out.println("3.뒤로가기");
+      System.out.println("3.대출");
+      System.out.println("4.뒤로가기");
       System.out.println("0.종료");
       int type = scanInt("메뉴를 선택하세요");
       

@@ -9,10 +9,9 @@ public class LoanUI extends BaseUI {
  	
 	public void execute() {
 		
-		I_BankUI ui = null;
-		
 		while(true) {
 			int type = menu();
+			I_BankUI ui = null;
 			switch (type) {
 			case 1:
 				ui = new LoanMoneyUI(); 
@@ -24,7 +23,7 @@ public class LoanUI extends BaseUI {
 				ui = new LoanViewUI();
 				break;
 			case 4:
-				ui = new AccountUI();
+				ui = new AccountTaskUI();
 				break;
 			case 5:
 				ui = new ExitUI();
