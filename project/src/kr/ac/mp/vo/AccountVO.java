@@ -3,7 +3,7 @@ package kr.ac.mp.vo;
 public class AccountVO {
 	private String id;
 	private String account;
-	private String account_money;
+	private int account_money;
 
 
 	public String getId() {
@@ -22,11 +22,11 @@ public class AccountVO {
 		this.account = account;
 	}
 
-	public String getAccount_money() {
+	public int getAccount_money() {
 		return account_money;
 	}
 
-	public void setAccount_money(String account_money) {
+	public void setAccount_money(int account_money) {
 		this.account_money = account_money;
 	}
 

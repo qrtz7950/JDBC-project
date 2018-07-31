@@ -89,7 +89,7 @@ public class AccountDAO {
 				acc = new AccountVO();
 				acc.setId(rs.getString(1));
 				acc.setAccount(rs.getString(2));
-				acc.setAccount_money(rs.getString(3));
+				acc.setAccount_money(Integer.parseInt(rs.getString(3)));
 				list.add(acc);
 			}
 			
@@ -121,7 +121,8 @@ public class AccountDAO {
 			while(rs.next()) {
 				acc.setId(rs.getString(1));
 				acc.setAccount(rs.getString(2));
-				acc.setAccount_money(rs.getString(3));
+				acc.setAccount_money(Integer.parseInt(rs.getString(3)));
+				
 			}
 			
 			} catch(Exception e) {
@@ -132,7 +133,7 @@ public class AccountDAO {
 		return acc;
 	}
 	
-	public void delAccount(String account) {
+	public void delAccount(AccountVO account) {
 		
 		try {
 			conn = ConnectionFactory.getConnection();
@@ -144,10 +145,10 @@ public class AccountDAO {
 			sql.append("   and id = ? ");
 			
 			pstmt = conn.prepareStatement(sql.toString());
-			pstmt.setString(1,account);
+			pstmt.setString(1,account.getAccount());
 			pstmt.setString(2,bank.getId());
 						
-			pstmt.executeQuery();
+			pstmt.executeUpdate();
 
 			} catch(Exception e) {
 				e.printStackTrace();

@@ -62,13 +62,18 @@ public class BankService {
 	public List<Object> selAccount() {
 		
 		List<Object> list = accDao.selAccount(); 
-	      
-	    for(int i = 0; i<list.size(); i++) {
+		
+	    return list;
+	}
+	
+	public void listPrint() {
+		
+		List<Object> list = selAccount();
+		
+		for(int i = 0; i<list.size(); i++) {
 	         System.out.print(i+1 + ". ");
 	         System.out.println(list.get(i));
 	    }
-	      
-	    return list;
 	}
 
 	public AccountVO selAccount(String account) {
@@ -76,7 +81,7 @@ public class BankService {
 		return accDao.selAccount(account);
 	}
 
-	public void delAccount(String account) {
+	public void delAccount(AccountVO account) {
 		accDao.delAccount(account);
 	}
 	
@@ -91,13 +96,22 @@ public class BankService {
 	}
 	
 	public void returnMoney(String account, int returnM) {
-		accDao.subMoney(account, returnM);
-		loanDao.loanUpdate(-returnM);
+		if(returnM <= acc.getAccount_money()) {
+			accDao.subMoney(account, returnM);
+			loanDao.loanUpdate(-returnM);
+		} else {
+			System.out.println("잔액이 부족합니다");
+		}
 	}
 	
 	public void sendMoney(String account, int m) {
-		accDao.subMoney(acc.getAccount(), m);
-	    accDao.sendMoney(account, m);
+		
+		if(m <= acc.getAccount_money()) {
+			accDao.subMoney(acc.getAccount(), m);
+			accDao.sendMoney(account, m);
+		} else {
+			System.out.println("잔액이 부족합니다");
+		}
 	}
 	
 	public void loanView() {

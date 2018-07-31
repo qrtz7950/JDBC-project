@@ -12,23 +12,30 @@ public class AccountSelectUI extends BaseUI {
 	private static String account;
 	private List<Object> list = new ArrayList<Object>();
 
+	public AccountSelectUI() {
+		list=bankser.selAccount();
+	}
+
 	@Override
 	public void execute() {
-
-		accountSelect();
-
-		I_BankUI ui = null;
-
-		ui = new AccountTaskUI();
-		ui.execute();
+		
+		if(list.size()==0) {
+			System.out.println("계좌가 존재하지 않습니다.");
+			new AccountUI().execute();
+		}else {			
+			accountSelect();
+	
+			I_BankUI ui = null;
+	
+			ui = new AccountTaskUI();
+			ui.execute();
+		}
 	}
 	
 	public void accountSelect() {
 		
 		System.out.println("현재 소유하고 있는 계좌 현황은");
-
-		list = bankser.selAccount();
-
+		bankser.listPrint();
 		int accSel = scanInt("입니다 업무를 보고싶은 계좌를 입력하세요");
 		accSel -= 1;
 
@@ -50,4 +57,9 @@ public class AccountSelectUI extends BaseUI {
 	public String getAcc() {
 		return account;
 	}
+	
+	public List<Object> getList(){
+		return list;
+	}
+	
 }
