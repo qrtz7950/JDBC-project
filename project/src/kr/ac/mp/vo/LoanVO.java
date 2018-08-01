@@ -26,7 +26,7 @@ public class LoanVO {
 	}
 
 	public void reset() {
-		this.id = null;
-		this.loanMoney = 0;
+		LoanVO.id = null;
+		LoanVO.loanMoney = 0;
 	}
 }

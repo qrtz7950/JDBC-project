@@ -9,7 +9,6 @@ import kr.ac.mp.vo.AccountVOFactory;
 public class AccountSelectUI extends BaseUI {
 
 	private static AccountVO acc = AccountVOFactory.getInstance();
-	private static String account;
 	private List<Object> list = new ArrayList<Object>();
 
 	public AccountSelectUI() {

@@ -9,6 +9,8 @@ public class LoanMoneyUI extends BaseUI {
 		loanM = scanInt("대출하실 금액을 입력하세요: ");
 		
 		bankser.loanMoney(loanM ,bank.getName());
+		
+		bankser.loanSet();
 	}
 	
  }

@@ -11,6 +11,8 @@ public class LoanReturnUI extends BaseUI {
 		
 		bankser.returnMoney(acc.getAccount(), returnM);
 		
+		bankser.loanSet();
+		
 	}
 
 }

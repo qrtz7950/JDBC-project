@@ -8,6 +8,7 @@ import kr.ac.mp.vo.AccountVO;
 import kr.ac.mp.vo.AccountVOFactory;
 import kr.ac.mp.vo.BankVO;
 import kr.ac.mp.vo.LoanVO;
+import kr.ac.mp.vo.LoanVOFactory;
 
 public abstract class BaseUI implements I_BankUI {
 
@@ -22,7 +23,7 @@ public abstract class BaseUI implements I_BankUI {
 		bankser = BankServiceFactory.getInstance();
 		bank = new BankVO();
 		acc = AccountVOFactory.getInstance();
-		loanV = new LoanVO();
+		loanV = LoanVOFactory.getInstance();
 	}
 	
 	protected int scanInt(String msg) {

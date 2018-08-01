@@ -7,6 +7,10 @@ package kr.ac.mp.ui;
  */
 public class LoanUI extends BaseUI {
  	
+	public LoanUI() {
+		bankser.loanSet();
+	}
+	
 	public void execute() {
 		
 		while(true) {

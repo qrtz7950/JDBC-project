@@ -164,7 +164,7 @@ public class AccountDAO {
 	 * @param sendMoney
 	 * @param mode
 	 */
-	public void sendMoney(String account, int sendMoney) {
+	public boolean sendMoney(String account, int sendMoney) {
 		
 		try {
 			conn = ConnectionFactory.getConnection();
@@ -183,14 +183,13 @@ public class AccountDAO {
 			
 			if(!rs.next()) {
 				System.out.println("잘못된 계좌번호 입니다.");
-				System.out.println(bank.getId());
 				new AccountViewUI().execute();
 				
 				System.out.println("계좌를 다시 입력하세요 : ");
 				String acc = sc.nextLine();
 				
 				sendMoney(acc, sendMoney);
-				return;
+				return false;
 			}
 			
 			String name = rs.getString(2);
@@ -214,6 +213,7 @@ public class AccountDAO {
 			} finally {
 				JDBCClose.close(conn, pstmt);
 		}
+		return true;
 		
 	}
 	
@@ -228,6 +228,7 @@ public class AccountDAO {
 			
 			StringBuilder sql = new StringBuilder();
 			
+			sql.delete(0, sql.length());
 			sql.append("update account ");
 			sql.append("  set account_money = account_money - ? ");
 			sql.append("  where account = ? ");

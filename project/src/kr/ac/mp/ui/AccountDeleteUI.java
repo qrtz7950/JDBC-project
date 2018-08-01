@@ -2,8 +2,6 @@ package kr.ac.mp.ui;
 
 import java.util.List;
 
-import kr.ac.mp.vo.AccountVO;
-
 public class AccountDeleteUI extends BaseUI {
 
 	private List<Object> list = null;

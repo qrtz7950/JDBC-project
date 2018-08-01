@@ -11,6 +11,7 @@ import kr.ac.mp.ui.BankUI;
 import kr.ac.mp.vo.AccountVO;
 import kr.ac.mp.vo.AccountVOFactory;
 import kr.ac.mp.vo.BankVO;
+import kr.ac.mp.vo.LoanVO;
 
 public class BankService {
 	
@@ -83,8 +84,6 @@ public class BankService {
 	
 	public void loanMoney(int loanM, String name) {
 		int currLoan = loanDao.loanUpdate(loanM);
-		selAccount();
-		listPrint();
 		System.out.print("대출받은 금액을 보낼 계좌를 입력하세요 : ");
 		String account = sc.nextLine();
 		accDao.sendMoney(account, loanM);
@@ -94,6 +93,23 @@ public class BankService {
 	}
 	
 	public void returnMoney(String account, int returnM) {
+		if(returnM > LoanVO.getLoanMoney()) {
+			System.out.println("상환하시려는 금액이 대출했던 금액보다 큽니다.");
+			System.out.println("그대로 진행하시면 남은 금액은 은행에 기부됩니다.");
+			System.out.print("계속하길 원하시면 1 아니면 2를 입력하세요 : ");
+			int sel = Integer.parseInt(sc.nextLine());
+			
+			while(sel!=1 && sel!=2) {
+				System.out.println("다시 입력하세요");
+				sel = Integer.parseInt(sc.nextLine());
+			}
+
+			if(sel==2) {
+				System.out.println("아쉽....다음엔 주세요!");
+				return;
+			}
+		}
+			
 		if(returnM <= acc.getAccount_money()) {
 			accDao.subMoney(account, returnM);
 			loanDao.loanUpdate(-returnM);
@@ -103,10 +119,10 @@ public class BankService {
 	}
 	
 	public void sendMoney(String account, int m) {
-		System.out.println(acc);
 		if(m <= acc.getAccount_money()) {
-			accDao.subMoney(acc.getAccount(), m);
-			accDao.sendMoney(account, m);
+			if(!accDao.sendMoney(account, m)) {
+				accDao.subMoney(acc.getAccount(),m);
+			}
 		} else {
 			System.out.println("잔액이 부족합니다");
 		}
@@ -115,6 +131,10 @@ public class BankService {
 	public void loanView() {
 		String str =  loanDao.loanview();
 		System.out.println(str);
+	}
+	
+	public void loanSet() {
+		loanDao.loanSet();
 	}
 
 }

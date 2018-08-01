@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import kr.ac.mp.util.ConnectionFactory;
 import kr.ac.mp.util.JDBCClose;
 import kr.ac.mp.vo.BankVO;
+import kr.ac.mp.vo.LoanVO;
 
 public class LoanDAO {
 	
@@ -116,6 +117,34 @@ public class LoanDAO {
 		}
 		
 		return str;
+	}
+	
+	public void loanSet() {
+		
+		try {
+			conn = ConnectionFactory.getConnection();
+			
+			StringBuilder sql = new StringBuilder();
+			sql.append("select id, loan_money ");
+			sql.append("  from loan ");
+			sql.append("  where id = ? ");
+			
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, bank.getId());
+			
+			ResultSet rs = pstmt.executeQuery(); 
+			
+			if(rs.next()) {
+				LoanVO.setId(rs.getString(1));
+				LoanVO.setLoanMoney(rs.getInt(2));
+			}
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCClose.close(conn, pstmt);
+		}
+		
 	}
 	
 		

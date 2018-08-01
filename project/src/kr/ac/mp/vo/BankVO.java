@@ -27,7 +27,7 @@ public class BankVO {
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		BankVO.name = name;
 	}
 
 	public String getId() {
@@ -35,7 +35,7 @@ public class BankVO {
 	}
 
 	public void setId(String id) {
-		this.id = id;
+		BankVO.id = id;
 	}
 
 	public String getPassword() {
@@ -43,12 +43,12 @@ public class BankVO {
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		BankVO.password = password;
 	}
 	
 	public void reset() {
-		this.id = null;
-		this.name = null;
-		this.password = null;
+		BankVO.id = null;
+		BankVO.name = null;
+		BankVO.password = null;
 	}
 }
