@@ -31,7 +31,7 @@ public abstract class BaseUI implements I_BankUI {
 		int sel = 0;
 		try {
 			do {
-				System.out.println(" 숫자만 입력해주세요");
+				System.out.println("\n숫자만 입력해주세요");
 				temp = sc.nextLine();
 			} while(!checkInt(temp));
 			sel = Integer.parseInt(temp);

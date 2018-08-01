@@ -42,7 +42,7 @@ public class AccountTaskUI extends BaseUI {
       System.out.println("------------------------------------------");
       System.out.println("1.조회");
       System.out.println("2.이체");
-      System.out.println("3.대출");
+      System.out.println("3.대출 메뉴");
       System.out.println("4.뒤로가기");
       System.out.println("0.종료");
       int type = scanInt("메뉴를 선택하세요");

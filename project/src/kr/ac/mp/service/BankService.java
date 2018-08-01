@@ -83,6 +83,8 @@ public class BankService {
 	
 	public void loanMoney(int loanM, String name) {
 		int currLoan = loanDao.loanUpdate(loanM);
+		selAccount();
+		listPrint();
 		System.out.print("대출받은 금액을 보낼 계좌를 입력하세요 : ");
 		String account = sc.nextLine();
 		accDao.sendMoney(account, loanM);
