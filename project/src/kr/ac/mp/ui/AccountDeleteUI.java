@@ -19,10 +19,6 @@ public class AccountDeleteUI extends BaseUI {
 			System.out.println("해지할 계좌가 존재하지 않습니다.");
 			new AccountUI().execute();
 		}else {	
-			System.out.println("현재 소유하고 있는 계좌 현황은");
-			bankser.listPrint();
-			int accSel = scanInt("입니다 해지하고 싶은 번호를 입력하세요");
-			accSel -= 1;
 			acc= (new AccountSelectUI().accountSelect());
 			bankser.delAccount(acc);
 		}

@@ -6,13 +6,10 @@ public class LoanReturnUI extends BaseUI {
 	
 	public void execute() {
 		
-		AccountSelectUI asui = new AccountSelectUI();
 		
-		asui.accountSelect();
+		returnM = scanInt("대출상환하실 금액을 입력하세요 ");
 		
-		returnM = scanInt("대출상환하실 금액을 입력하세요: ");
-		
-		bankser.returnMoney(asui.getAcc(), returnM);
+		bankser.returnMoney(acc.getAccount(), returnM);
 		
 	}
 

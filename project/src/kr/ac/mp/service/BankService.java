@@ -77,11 +77,6 @@ public class BankService {
 	    }
 	}
 
-	public AccountVO selAccount(String account) {
-		
-		return accDao.selAccount(account);
-	}
-
 	public void delAccount(AccountVO account) {
 		accDao.delAccount(account);
 	}
@@ -106,7 +101,7 @@ public class BankService {
 	}
 	
 	public void sendMoney(String account, int m) {
-		
+		System.out.println(acc);
 		if(m <= acc.getAccount_money()) {
 			accDao.subMoney(acc.getAccount(), m);
 			accDao.sendMoney(account, m);

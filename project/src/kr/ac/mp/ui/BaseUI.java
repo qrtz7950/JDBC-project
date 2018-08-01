@@ -5,6 +5,7 @@ import java.util.Scanner;
 import kr.ac.mp.service.BankService;
 import kr.ac.mp.service.BankServiceFactory;
 import kr.ac.mp.vo.AccountVO;
+import kr.ac.mp.vo.AccountVOFactory;
 import kr.ac.mp.vo.BankVO;
 import kr.ac.mp.vo.LoanVO;
 
@@ -20,7 +21,7 @@ public abstract class BaseUI implements I_BankUI {
 		sc = new Scanner(System.in);
 		bankser = BankServiceFactory.getInstance();
 		bank = new BankVO();
-		acc = new AccountVO();
+		acc = AccountVOFactory.getInstance();
 		loanV = new LoanVO();
 	}
 	

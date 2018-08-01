@@ -101,37 +101,6 @@ public class AccountDAO {
 		
 		return list;
 	}
-	public AccountVO selAccount(String account) {
-		
-		try {
-			conn = ConnectionFactory.getConnection();
-			
-			StringBuilder sql = new StringBuilder();
-			
-			sql.append("select * from account ");
-			sql.append(" where id = ? ");
-			sql.append("   and account = ? ");
-			
-			pstmt = conn.prepareStatement(sql.toString());
-			pstmt.setString(1,bank.getId());
-			pstmt.setString(2,account);
-						
-			ResultSet rs = pstmt.executeQuery();
-						
-			while(rs.next()) {
-				acc.setId(rs.getString(1));
-				acc.setAccount(rs.getString(2));
-				acc.setAccount_money(Integer.parseInt(rs.getString(3)));
-				
-			}
-			
-			} catch(Exception e) {
-				e.printStackTrace();
-			} finally {
-				JDBCClose.close(conn, pstmt);
-			}
-		return acc;
-	}
 	
 	public void delAccount(AccountVO account) {
 		
@@ -252,7 +221,7 @@ public class AccountDAO {
 	 * 입력받은 금액을 자신의 계좌에서 돈을 빼는 메소드
 	 * @param subM
 	 */
-	public void subMoney(String acc, int subM) {
+	public void subMoney(String account, int subM) {
 		
 		try {
 			conn = ConnectionFactory.getConnection();
@@ -265,7 +234,7 @@ public class AccountDAO {
 			
 			pstmt = conn.prepareStatement(sql.toString());
 			pstmt.setInt(1, subM);
-			pstmt.setString(2, acc);
+			pstmt.setString(2, account);
 						
 			pstmt.executeUpdate();
 			
@@ -275,7 +244,7 @@ public class AccountDAO {
 			sql.append("  where account = ? ");
 			
 			pstmt = conn.prepareStatement(sql.toString());
-			pstmt.setString(1, acc);
+			pstmt.setString(1, account);
 			
 			ResultSet rs = pstmt.executeQuery();
 			
@@ -283,7 +252,9 @@ public class AccountDAO {
 			
 			int currM = rs.getInt(1);
 			
-			System.out.println("현재 " + acc + "계좌에 잔액은 " + currM + "원입니다.");
+			System.out.println("현재 " + account + "계좌에 잔액은 " + currM + "원입니다.");
+			
+			acc.setAccount_money(currM);
 			
 			} catch(Exception e) {
 				e.printStackTrace();
