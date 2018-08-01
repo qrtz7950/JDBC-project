@@ -46,4 +46,9 @@ public class BankVO {
 		this.password = password;
 	}
 	
+	public void reset() {
+		this.id = null;
+		this.name = null;
+		this.password = null;
+	}
 }

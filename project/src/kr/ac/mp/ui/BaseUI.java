@@ -6,6 +6,7 @@ import kr.ac.mp.service.BankService;
 import kr.ac.mp.service.BankServiceFactory;
 import kr.ac.mp.vo.AccountVO;
 import kr.ac.mp.vo.BankVO;
+import kr.ac.mp.vo.LoanVO;
 
 public abstract class BaseUI implements I_BankUI {
 
@@ -13,30 +14,36 @@ public abstract class BaseUI implements I_BankUI {
 	protected BankService bankser;
 	protected BankVO bank;
 	protected AccountVO acc;
+	protected LoanVO loanV; 		
 	
 	public BaseUI() {
 		sc = new Scanner(System.in);
 		bankser = BankServiceFactory.getInstance();
 		bank = new BankVO();
 		acc = new AccountVO();
+		loanV = new LoanVO();
 	}
 	
 	protected int scanInt(String msg) {
-		String temp;
+		String temp = null;
 		System.out.print(msg);
+		int sel = 0;
+		try {
+			do {
+				System.out.println(" 숫자만 입력해주세요");
+				temp = sc.nextLine();
+			} while(!checkInt(temp));
+			sel = Integer.parseInt(temp);
+		} catch (Exception e) {
+			System.out.println("입력란이 비어있습니다");
+			sel = scanInt(msg);
+		}
 		
-		do {
-			System.out.println(" 숫자만 입력해주세요");
-			temp = sc.nextLine();
-		} while(!checkInt(temp));
-		
-		int sel = Integer.parseInt(temp);
 		
 		return sel;
 	}
 	
 	protected String scanString(String msg) {
-		
 		System.out.println(msg);
 		String str = sc.nextLine();
 		return str;

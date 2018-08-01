@@ -7,6 +7,7 @@ import java.util.Scanner;
 import kr.ac.mp.dao.AccountDAO;
 import kr.ac.mp.dao.LoanDAO;
 import kr.ac.mp.dao.MemberDAO;
+import kr.ac.mp.ui.BankUI;
 import kr.ac.mp.vo.AccountVO;
 import kr.ac.mp.vo.AccountVOFactory;
 import kr.ac.mp.vo.BankVO;
@@ -27,20 +28,20 @@ public class BankService {
 		acc = AccountVOFactory.getInstance();
 	}
 	
-	
-
 	public void sign(BankVO bank) {
+		if(!dao.checkOverlapMember(bank)) {
+			System.out.println("중복된 아이디입니다");
+			new BankUI().execute();
+		}
 		dao.insertMember(bank);
 	}
 
 	public boolean login(BankVO bank) {
-		boolean bool = dao.idPwdCompare(bank);
+		boolean bool = false;
+		bool = dao.idPwdCompare(bank);
 		return bool;
 	}
 
-	public BankVO loginConfirm() {
-		return null;
-	}
 	
 	public String createAccount() {
 		

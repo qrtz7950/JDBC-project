@@ -19,6 +19,7 @@ public class AccountTaskUI extends BaseUI {
 	    	  break;
 	      case 4:
 	         ui = new AccountUI();
+	         acc.reset();
 	         break;
 	      case 0:
 	         ui = new ExitUI();

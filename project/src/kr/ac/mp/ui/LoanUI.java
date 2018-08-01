@@ -24,6 +24,7 @@ public class LoanUI extends BaseUI {
 				break;
 			case 4:
 				ui = new AccountTaskUI();
+				loanV.reset();
 				break;
 			case 5:
 				ui = new ExitUI();

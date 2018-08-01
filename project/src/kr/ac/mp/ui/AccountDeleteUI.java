@@ -23,7 +23,7 @@ public class AccountDeleteUI extends BaseUI {
 			bankser.listPrint();
 			int accSel = scanInt("입니다 해지하고 싶은 번호를 입력하세요");
 			accSel -= 1;
-			acc = (AccountVO)(list.get(accSel));
+			acc= (new AccountSelectUI().accountSelect());
 			bankser.delAccount(acc);
 		}
 		

@@ -35,7 +35,11 @@ public class AccountVO {
 		return account + "  " + account_money + "원";
 	}
 	
-	
+	public void reset() {
+		this.id = null;
+		this.account = null;
+		this.account_money = 0;
+	}
 	
 	
 	

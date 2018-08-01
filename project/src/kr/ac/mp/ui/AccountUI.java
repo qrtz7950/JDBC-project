@@ -23,6 +23,7 @@ public class AccountUI extends BaseUI {
 			break;
 		case 5:
 			ui = new BankUI();
+			bank.reset();
 			break;
 		case 0:
 			ui = new ExitUI();

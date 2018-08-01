@@ -32,7 +32,7 @@ public class AccountSelectUI extends BaseUI {
 		}
 	}
 	
-	public void accountSelect() {
+	public AccountVO accountSelect() {
 		
 		System.out.println("현재 소유하고 있는 계좌 현황은");
 		bankser.listPrint();
@@ -51,7 +51,7 @@ public class AccountSelectUI extends BaseUI {
 			accountSelect();
 		}
 
-		
+		return acc;
 	}
 
 	public String getAcc() {

@@ -16,6 +16,31 @@ public class MemberDAO {
 	 * 회원가입을 위해 서비스에서 받아서 DB로 입력
 	 * @param bank
 	 */
+	public boolean checkOverlapMember(BankVO bank) {
+		boolean bool = false;
+		try {
+			conn = ConnectionFactory.getConnection();
+			
+			StringBuilder sql = new StringBuilder();
+			sql.append("select id from memberlist ");
+			sql.append("where id = ? ");
+			
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, bank.getId());
+			
+			ResultSet rs = pstmt.executeQuery();
+			if(!rs.next()) {
+				bool = true;
+			} 
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCClose.close(conn, pstmt);
+		}
+		
+		return bool;
+	}
+	
 	public void insertMember(BankVO bank){
 
 		try {

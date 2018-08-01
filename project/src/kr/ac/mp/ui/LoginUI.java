@@ -26,16 +26,22 @@ public class LoginUI extends BaseUI {
 			System.out.println("1. 다시 로그인 시도");
 			System.out.println("2. 이전으로");
 			int sel = scanInt("메뉴를 선택해주세요");
-				if(sel == 1) {
-					execute();
-				} else {
-					new BankUI().execute();
-				}
-			} else {
-			System.out.println(bank.getName() + "님 환영합니다");
-			new AccountUI().execute();
+			retryLogin(sel);
+		} else {
+		System.out.println(bank.getName() + "님 환영합니다");
+		new AccountUI().execute();
 		}
 		
+	}
+	
+	private void retryLogin(int sel) {
+		if(sel == 1) {
+			execute();
+		} else if (sel == 2) {
+			new BankUI().execute();
+		} else {
+			retryLogin(scanInt("다시 입력하세요"));
+		}
 	}
 
 }
